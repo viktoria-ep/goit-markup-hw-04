@@ -39,6 +39,8 @@ p {
 
 .page-header {
   border-bottom: 1px solid #e7e9fc;
+  box-shadow: 0 1px 6px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 2px 1px 0 rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
@@ -78,16 +80,40 @@ p {
 
 .header-nav {
   font-weight: 500;
+  position: relative;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #2e2f42;
   padding: 24px 0;
   display: block;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #404bbf;
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-nav:hover::after,
+.header-nav:focus::after,
+.header-nav.header-nav.current::after {
+  opacity: 1;
 }
 
 .header-nav:hover,
-.header-nav:focus {
+.header-nav:focus,
+.address-item:hover,
+.address-item:focus,
+.header-nav.current {
   color: #404bbf;
 }
 
@@ -110,15 +136,21 @@ p {
   color: #434455;
   display: block;
   padding: 24px 0;
-}
-
-.address-item:hover,
-.address-item:focus {
-  color: #404bbf;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-hero {
+  max-width: 1440px;
   background-color: #2e2f42;
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/people-office.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
   padding: 188px 0;
 }
 
@@ -150,6 +182,7 @@ p {
   padding: 16px 32px;
   margin: 0 auto;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover,
@@ -189,6 +222,22 @@ p {
 
 .section-text.advantages {
   padding-bottom: 0;
+}
+
+.advantages-box-icon {
+  width: 264px;
+  height: 112px;
+  border: 1px solid #8e8f99;
+  border-radius: 4px;
+  background-color: #f4f4fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.icon {
+  fill: transparent;
 }
 
 .content-team {
@@ -241,6 +290,28 @@ p {
   letter-spacing: 0.02em;
   text-align: center;
   color: #434455;
+  margin-bottom: 8px;
+}
+
+.team-social {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.team-social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #4d5ae5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-social-link:hover {
+  background-color: #404bbf;
 }
 
 .section-heading {
@@ -274,6 +345,34 @@ p {
   width: calc((100% - 48px) / 3);
 }
 
+.portfolio-list:hover {
+  box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
+}
+
+.thumb {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.portfolio-list:hover .thumb-text {
+  transform: translate(0);
+}
+
+.thumb-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+  color: #f4f4fd;
+  padding: 40px 32px;
+  transform: translatey(100%);
+  transition: transform 250ms ease;
+}
+
 .our-portfolio {
   display: flex;
   flex-wrap: wrap;
@@ -295,6 +394,11 @@ p {
   color: #f4f4fd;
 }
 
+.footer-list {
+  display: flex;
+  gap: 120px;
+}
+
 .footer-text {
   font-weight: 400;
   font-size: 16px;
@@ -302,4 +406,32 @@ p {
   letter-spacing: 0.02em;
   color: #f4f4fd;
   max-width: 264px;
+}
+
+.footer-list-social {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-social-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.footer-social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4d5ae5;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-social-link:hover {
+  background-color: #31d0aa;
 }
